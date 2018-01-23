@@ -23,12 +23,11 @@ TARGET_2ND_CPU_VARIANT := cortex-a53
 TARGET_INIT_VENDOR_LIB := libinit_s5neolte
 
 # Kernel
-#TARGET_KERNEL_ARCH := arm64
-#TARGET_KERNEL_CONFIG := lineageos_s5neolte_defconfig
-#TARGET_KERNEL_HEADER_ARCH := arm64
-#TARGET_KERNEL_SOURCE := kernel/samsung/exynos7580-common
-#BOARD_KERNEL_IMAGE_NAME := Image
-TARGET_PREBUILT_KERNEL := device/samsung/s5neolte/prebuilt/kernel
+TARGET_KERNEL_ARCH := arm64
+TARGET_KERNEL_CONFIG := lineageos_s5neolte_defconfig
+TARGET_KERNEL_HEADER_ARCH := arm64
+TARGET_KERNEL_SOURCE := kernel/samsung/exynos7580-common
+BOARD_KERNEL_IMAGE_NAME := Image
 
 # Image
 BOARD_KERNEL_BASE := 0x10000000

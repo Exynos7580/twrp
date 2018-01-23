@@ -3,6 +3,6 @@
 		"remote":"github",
 		"repository":"Exynos7580/android_kernel_samsung_exynos7580-common",
 		"target_path":"kernel/samsung/exynos7580-common",
-		"revision":"los-14.1"
+		"revision":"lineage-15.1"
 	}
 ]
