@@ -28,16 +28,16 @@
  */
 
 #include <stdlib.h>
-#include <stdio.h>
 #include <string.h>
-
-#include "property_service.h"
-#include "vendor_init.h"
-#include "log.h"
-#include "util.h"
-
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
+
+#include <android-base/logging.h>
+#include <android-base/properties.h>
+
+#include "property_service.h"
+
+using android::base::GetProperty;
 
 void property_override(char const prop[], char const value[])
 {	
@@ -50,11 +50,17 @@ void property_override(char const prop[], char const value[])
 		__system_property_add(prop, strlen(prop), value, strlen(value));
 }
 
+namespace android {
+namespace init {
 void vendor_load_properties()
 {
 	std::string platform;
-	std::string bootloader = property_get("ro.bootloader");
+	std::string bootloader = GetProperty("ro.bootloader", "");
 	std::string device;
+
+	platform = GetProperty("ro.board.platform", "");
+	if (platform != ANDROID_TARGET)
+		return;
 
 	if (bootloader.find("A510F") != std::string::npos) {
 		/* SM-A510F */
@@ -76,6 +82,8 @@ void vendor_load_properties()
 		property_override("ro.product.device", "a5xelte");
 	}
 
-	device = property_get("ro.product.device");
-	INFO("Found bootloader id %s setting build properties for %s device\n", bootloader.c_str(), device.c_str());
+	device = GetProperty("ro.product.device", "");
+	LOG(ERROR) << "Found bootloader id '" << bootloader.c_str() << "' setting build properties for '" << device.c_str() << "' device\n";
 }
+}  // namespace init
+}  // namespace android
