@@ -51,11 +51,11 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 3145728000
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 12096372736
 BOARD_FLASH_BLOCK_SIZE := 131072
 
-
 TARGET_SPECIFIC_HEADER_PATH += device/samsung/exynos7580-common/include
 ARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/class/android_usb/android0/f_mass_storage/lun/file
 TARGET_RECOVERY_FSTAB := device/samsung/exynos7580-common/recovery.fstab
 TARGET_SYSTEM_PROP += device/samsung/exynos7580-common/system.prop
+TARGET_RECOVERY_DEVICE_DIRS += device/samsung/exynos7580-common
 
 # TWRP specific build flags
 TW_THEME := portrait_hdpi
